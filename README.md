@@ -1,2 +1,2 @@
 # lisp_mkdatapack
-Minecraftのdatapackのサンプルを作るためのコードです。
+Minecraftのdatapackのサンプルを作るためのコード。
