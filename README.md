@@ -1,0 +1,2 @@
+# lisp_mkdatapack
+Minecraftのdatapackのサンプルを作るためのコードです。
