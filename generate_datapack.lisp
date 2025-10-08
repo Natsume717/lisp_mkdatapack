@@ -1,6 +1,6 @@
 (require :uiop)
 
-(let* ((desktop-path (merge-pathnames "Desktop/sample/"
+(let* ((desktop-path (merge-pathnames "Desktop/lisp_data/sample/"
                                     (user-homedir-pathname)))
        (datapack-name (car (last (pathname-directory desktop-path))))
        (data-path (merge-pathnames "data/" desktop-path))
@@ -139,7 +139,9 @@
                          :if-does-not-exist :create)
     (format stream "{
   \"pack\": {
-    \"pack_format\": 71,
+    \"pack_format\": 88,
+    \"min_format\": [88.0],
+    \"max_format\": 88,
     \"description\": {
       \"text\": \". \",
       \"extra\": [
