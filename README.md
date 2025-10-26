@@ -12,5 +12,4 @@ It is intended for personal use, and is not designed with general-purpose usabil
 - 実行方法: `sbcl --script datapack-generator.lisp`
 
 ## ライセンス
-This project is licensed under the CC BY-NC-SA 4.0 License.  
-Commercial use is prohibited.
+This project is licensed under the MIT License. 
