@@ -34,10 +34,6 @@
   (ensure-directories-exist client-path)
   (format t "clientフォルダを作成しました: ~a~%" client-path)
 
-  ;; tagsフォルダの作成
-  (ensure-directories-exist tags-path)
-  (format t "tagsフォルダを作成しました: ~a~%" tags-path)
-
   ;; 各フォルダにfunctionフォルダの作成
   (dolist (base-path (list tags-path lzaq-path client-path minecraft-path))
     (let ((function-path (merge-pathnames "function/" base-path)))
@@ -78,6 +74,7 @@
           (world_preset-path (merge-pathnames "world_preset/" contents-path))
           (dimension_type-path (merge-pathnames "dimension_type/" contents-path))
           (dimension-path (merge-pathnames "dimension/" contents-path))
+          (worldgens-path (merge-pathnames "worldgen/" contents-path))
           ;;tagsの中身
           (banner_pattern-path (merge-pathnames "banner_pattern/" tag-path))
           (block-path (merge-pathnames "block/" tag-path))
@@ -95,6 +92,21 @@
           (flat_level_generator_preset-path (merge-pathnames "flat_level_generator_preset/" worldgen-path))
           (structure-path (merge-pathnames "structure/" worldgen-path))
           (world_presets-path (merge-pathnames "world_prest/" worldgen-path))
+          ;;worldgenの中身
+          (biomes-path (merge-pathnames "biome/" worldgens-path))
+          (configured_carver-path (merge-pathnames "configured_carver/" worldgens-path))
+          (configured_feature-path (merge-pathnames "configured_feature/" worldgens-path))
+          (density_function-path (merge-pathnames "density_function/" worldgens-path))
+          (noise-path (merge-pathnames "noise/" worldgens-path))
+          (noise_setting-path (merge-pathnames "noise_setting/" worldgens-path))
+          (placed_feature-path (merge-pathnames "placed_feature/" worldgens-path))
+          (processor_list-path (merge-pathnames "processor_list/" worldgens-path))
+          (structures-path (merge-pathnames "structure/" worldgens-path))
+          (structure_set-path (merge-pathnames "structure_set/" worldgens-path))
+          (template_pool-path (merge-pathnames "template_pool/" worldgens-path))
+          (world_presets-path (merge-pathnames "world_preset/" worldgens-path))
+          (flat_level_generator_presets-path (merge-pathnames "flat_level_generator_preset/" worldgens-path))
+          (multi_noise_biome_source_parameter_list-path (merge-pathnames "multi_noise_biome_source_parameter_list/" worldgens-path))
           )
 
  ;; フォルダと名前のペアでまとめて処理
@@ -127,7 +139,23 @@
                  (,biome-path "biome")
                  (,flat_level_generator_preset-path "flat_level_generator_preset")
                  (,structure-path "structure")
-                 (,world_presets-path "world_presets")))
+                 (,world_presets-path "world_presets")
+                 ;;in worldgen foloder
+                 (,biomes-path "biome")
+                 (,configured_carver-path "configured_carver")
+                 (,configured_feature-path "configured_feature")
+                 (,density_function-path "density_function")
+                 (,noise-path "noise")
+                 (,noise_setting-path "noise_setting")
+                 (,placed_feature-path "placed_feature")
+                 (,processor_list-path "processor_list")
+                 (,structures-path "structure")
+                 (,structure_set-path "structure_set")
+                 (,template_pool-path "template_pool")
+                 (,world_presets-path "world_preset")
+                 (,flat_level_generator_presets-path "flat_level_generator_preset")
+                 (,multi_noise_biome_source_parameter_list-path "multi_noise_biome_source_parameter_list")
+                 ))
         (ensure-directories-exist (first entry))
         (format t "~aフォルダを作成しました: ~a~%" (second entry) (first entry)))))
 
@@ -165,6 +193,21 @@
                          :direction :output
                          :if-exists :supersede
                          :if-does-not-exist :create)
-    (format stream "~a © 2025 by LaspberryAqua is licensed under CC BY-NC-SA 4.0 ~%
-This code is distributed under the CC BY-NC-SA 4.0 License, with the intent to cover software scripts and Minecraft data packs. You are free to adapt, remix, and share under the same license. Commercial use is prohibited." datapack-name))
+    (format stream "MIT License~%~
+~%Copyright (c) 2025 Natsume ~a ~%~
+~%Permission is hereby granted, free of charge, to any person obtaining a copy~%~
+of this software and associated documentation files (the \"Software\"), to deal~%~
+in the Software without restriction, including without limitation the rights~%~
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell~%~
+copies of the Software, and to permit persons to whom the Software is~%~
+furnished to do so, subject to the following conditions:~%~
+~%The above copyright notice and this permission notice shall be included in all~%~
+copies or substantial portions of the Software.~%~
+~%THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR~%~
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,~%~
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE~%~
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER~%~
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,~%~
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE~%~
+SOFTWARE." datapack-name))
   (format t "LICENSE.txtファイルを作成しました: ~a~%" license-path))
