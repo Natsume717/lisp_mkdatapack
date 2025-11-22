@@ -11,5 +11,8 @@ It is intended for personal use, and is not designed with general-purpose usabil
 - Common Lisp (SBCL)
 - 実行方法: `sbcl --script datapack-generator.lisp`
 
+## Ver
+MC-Java 1.21.10
+
 ## ライセンス
 This project is licensed under the MIT License. 
