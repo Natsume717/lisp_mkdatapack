@@ -64,6 +64,7 @@
   (dolist (contents-path (list minecraft-path lzaq-path client-path))
     (let* ((advancement-path (merge-pathnames "advancement/" contents-path))
           (item_modifier-path (merge-pathnames "item_modifier/" contents-path))
+          (dialog-path (merge-pathnames "dialog/" contents-path))
           (damage_type-path (merge-pathnames "damage_type/" contents-path))
           (loot_table-path (merge-pathnames "loot_table/" contents-path))
           (predicate-path (merge-pathnames "predicate/" contents-path))
@@ -114,6 +115,7 @@
       (dolist (entry
                `((,advancement-path "advancement")
                  (,item_modifier-path "item_modifier")
+                 (,dialog-path "dialog")
                  (,damage_type-path "damage_type")
                  (,loot_table-path "loot_table")
                  (,predicate-path "predicate")
