@@ -77,6 +77,7 @@
           (dimension_type-path (merge-pathnames "dimension_type/" contents-path))
           (dimension-path (merge-pathnames "dimension/" contents-path))
           (worldgens-path (merge-pathnames "worldgen/" contents-path))
+          (enchantment-path (merge-pathnames "enchantment/" contents-path))
           ;;tagsの中身
           (banner_pattern-path (merge-pathnames "banner_pattern/" tag-path))
           (block-path (merge-pathnames "block/" tag-path))
@@ -127,6 +128,7 @@
                  (,world_preset-path "world_preset")
                  (,dimension_type-path "dimension_type")
                  (,dimension-path "dimension")
+                 (,enchantment-path "enchantment")
                  ;;in tags folder
                  (,banner_pattern-path "banner_pattern")
                  (,block-path "block")
@@ -171,9 +173,9 @@
                          :if-does-not-exist :create)
     (format stream "{
   \"pack\": {
-    \"pack_format\": 88,
-    \"min_format\": [88.0],
-    \"max_format\": 88,
+    \"pack_format\": 94.1,
+    \"min_format\": [94.1],
+    \"max_format\": 94.1,
     \"description\": {
       \"text\": \". \",
       \"extra\": [
