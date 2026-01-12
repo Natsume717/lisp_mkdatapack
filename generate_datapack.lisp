@@ -165,6 +165,41 @@
         (ensure-directories-exist (first entry))
         (format t "~aフォルダを作成しました: ~a~%" (second entry) (first entry)))))
 
+;;vanilla_advancements
+(let* ((vanilla_advancements-path
+        (merge-pathnames
+         "Desktop/lisp_data/sample/data/minecraft/advancement/"
+         (user-homedir-pathname)))
+
+       (advancements
+        '(("story/" ("cure_zombie_villager.json" "deflect_arrow.json" "enchant_item.json" "enter_the_end.json" "enter_the_nether.json" "follow_ender_eye.json" "form_obsidian.json" "iron_tools.json" "lava_bucket.json" "mine_diamond.json" "mine_stone.json" "obtain_armor.json" "root.json" "shiny_gear.json" "smelt_iron.json" "upgrade_tools.json"))
+          ("adventure/" ("adventuring_time.json" "arbalistic.json" "avoid_vibration.json" "blowback.json" "brush_armadillo.json" "bullseye.json" "craft_decorated_pot_using_only_sherds.json" "crafters_crafting_crafters.json" "fall_from_world_height.json" "heart_transplanter.json" "hero_of_the_village.json" "honey_block_slide.json" "kill_a_mob.json" "kill_all_mobs.json" "kill_mob_near_sculk_catalyst.json" "lighten_up.json" "lightning_rod_with_villager_no_fire.json" "minecraft_trials_edition.json" "ol_betsy.json" "overoverkill.json" "play_jukebox_in_meadows.json" "read_power_of_chiseled_bookshelf.json" "revaulting.json" "root.json" "salvage_sherd.json" "shoot_arrow.json" "sleep_in_bed.json" "sniper_duel.json" "spear_many_mobs.json" "spyglass_at_dragon.json" "spyglass_at_ghast.json" "spyglass_at_parrot.json" "summon_iron_golem.json" "throw_trident.json" "totem_of_undying.json" "trade.json" "trade_at_world_height.json" "trim_with_all_exclusive_armor_patterns.json" "trim_with_any_armor_pattern.json" "two_birds_one_arrow.json" "under_lock_and_key.json" "use_lodestone.json" "very_very_frightening.json" "voluntary_exile.json" "walk_on_powder_snow_with_leather_boots.json" "who_needs_rockets.json" "whos_the_pillager_now.json"))
+          ("end/" ("dragon_breath.json" "dragon_egg.json" "elytra.json" "enter_end_gateway.json" "find_end_city.json" "kill_dragon.json" "levitate.json" "respawn_dragon.json" "root.json"))
+          ("husbandry/" ("allay_deliver_cake_to_note_block.json" "allay_deliver_item_to_player.json" "axolotl_in_a_bucket.json" "balanced_diet.json" "bred_all_animals.json" "breed_an_animal.json" "complete_catalogue.json" "feed_snifflet.json" "fishy_business.json" "froglights.json" "kill_axolotl_target.json" "leash_all_frog_variants.json" "make_a_sign_glow.json" "obtain_netherite_hoe.json" "obtain_sniffer_egg.json" "place_dried_ghast_in_water.json" "plant_any_sniffer_seed.json" "plant_seed.json" "remove_wolf_armor.json" "repair_wolf_armor.json" "ride_a_boat_with_a_goat.json" "root.json" "safely_harvest_honey.json" "silk_touch_nest.json" "tactical_fishing.json" "tadpole_in_a_bucket.json" "tame_an_animal.json" "wax_off.json" "wax_on.json" "whole_pack.json"))
+          ("nether/" ("all_effects.json" "all_potions.json" "brew_potion.json" "charge_respawn_anchor.json" "create_beacon.json" "create_full_beacon.json" "distract_piglin.json" "explore_nether.json" "fast_travel.json" "find_bastion.json" "find_fortress.json" "get_wither_skull.json" "loot_bastion.json" "netherite_armor.json" "obtain_ancient_debris.json" "obtain_blaze_rod.json" "obtain_crying_obsidian.json" "return_to_sender.json" "ride_strider.json" "ride_strider_in_overworld_lava.json" "root.json" "summon_wither.json" "uneasy_alliance.json"))
+          )))
+
+  (dolist (category advancements)
+    (let* ((dir (first category))
+           (files (second category))
+           (dir-path (merge-pathnames dir vanilla_advancements-path)))
+
+      (ensure-directories-exist dir-path)
+
+      (dolist (file files)
+        (let ((full-path (merge-pathnames file dir-path)))
+          (ensure-directories-exist full-path)
+          (with-open-file (s full-path
+                         :direction :output
+                         :if-exists :supersede
+                         :if-does-not-exist :create)
+  (format s "{
+  \"criteria\": {
+    \"by_lzaq\": {
+      \"trigger\": \"minecraft:impossible\"
+    }
+  }
+}")))))))
 
   ;; pack.mcmetaファイルの作成
   (with-open-file (stream mcmeta-path
