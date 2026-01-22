@@ -12,7 +12,10 @@
        (lzaq-path (merge-pathnames "lzaq/" data-path))
        (client-path (merge-pathnames "client/" data-path))
        (mcmeta-path (merge-pathnames "pack.mcmeta" desktop-path))
-       (license-path (merge-pathnames "LICENSE.txt" desktop-path)))
+       (license-path (merge-pathnames "LICENSE.txt" desktop-path))
+       (dialog_in_tag-path (merge-pathnames "dialog/" tags-path))
+       (quick_action-path (merge-pathnames "quick_actions.json" dialog_in_tag-path))
+       (pause_screen_additions-path (merge-pathnames "pause_screen_additions.json" dialog_in_tag-path)))
 
   ;; sampleフォルダの作成
   (ensure-directories-exist desktop-path)
@@ -82,6 +85,7 @@
           (banner_pattern-path (merge-pathnames "banner_pattern/" tag-path))
           (block-path (merge-pathnames "block/" tag-path))
           (cat_variant-path (merge-pathnames "cat_variant/" tag-path))
+          (dialog-path (merge-pathnames "dialog/" tag-path))
           (entity_type-path (merge-pathnames "entity_type/" tag-path))
           (fluid-path (merge-pathnames "fluid/" tag-path))
           (function-path (merge-pathnames "function/" tag-path))
@@ -133,6 +137,7 @@
                  (,banner_pattern-path "banner_pattern")
                  (,block-path "block")
                  (,cat_variant-path "cat_variant")
+                 (,dialog-path "dialog")
                  (,entity_type-path "entity_type")
                  (,fluid-path "fluid")
                  (,function-path "function")
@@ -200,6 +205,23 @@
     }
   }
 }")))))))
+
+;;dialog in tag file
+(with-open-file (stream quick_action-path
+                      :direction :output
+                      :if-exists :supersede
+                      :if-does-not-exist :create)
+    (format stream "{~%    \"values\": [~%        ~%    ]~%}")
+    (format t "quick_actions.jsonファイルを作成しました: ~a~%" quick_action-path))
+
+;;
+(with-open-file (stream pause_screen_additions-path
+                      :direction :output
+                      :if-exists :supersede
+                      :if-does-not-exist :create)
+    (format stream "{~%    \"values\": [~%        ~%    ]~%}")
+    (format t "pause_screen_additions.jsonファイルを作成しました: ~a~%" pause_screen_additions-path))
+
 
   ;; pack.mcmetaファイルの作成
   (with-open-file (stream mcmeta-path
